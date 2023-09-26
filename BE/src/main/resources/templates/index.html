@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Authentication Example</title>
+</head>
+<body>
+<h1>JWT Authentication Example</h1>
+
+<div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" />
+</div>
+<div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" />
+</div>
+<div>
+    <button id="loginButton">Login</button>
+</div>
+<div>
+    <p id="message"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const loginButton = document.getElementById("loginButton");
+    const message = document.getElementById("message");
+
+    loginButton.addEventListener("click", () => {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // 로그인 요청을 보냅니다.
+        axios.post("/users/login", { username, password },{
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'token',
+                },
+                })
+            .then(function (response) {
+                localStorage.setItem('token', response.data.accessToken);
+                alert('성공적으로 로그인 했습니다');
+                window.location.href = "/userinfo";
+            })
+            .catch(function (error) {
+                alert('ID 또는 비밀번호가 틀립니다.');
+            });
+
+
+
+
+
+
+
+
+        // .then((response) => {
+            //     const token = response.data.token;
+            //     console.log(token);
+            //     console.log("1");
+            //     // 토큰을 저장하고 나중에 사용합니다.
+            //     localStorage.setItem("token", token);
+            //     message.textContent = "로그인 성공";
+            //     // window.location.href = "/userinfo";
+            // })
+            // .catch((error) => {
+            //     console.log("2");
+            //     console.error("로그인 실패:", error);
+            //     message.textContent = "로그인 실패";
+            // });
+    });
+</script>
+</body>
+</html>

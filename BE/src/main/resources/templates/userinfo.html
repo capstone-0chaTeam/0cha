@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Interface</title>
+</head>
+<body>
+<h1>User Information</h1>
+
+<div>
+    <label for="username">Username:</label>
+    <span id="username"></span>
+</div>
+
+<script>
+    // 사용자 정보를 로컬 스토리지에서 가져와서 화면에 표시합니다.
+    const usernameElement = document.getElementById("username");
+    const passwordElement = document.getElementById("password");
+
+    // 로컬 스토리지에서 토큰을 가져옵니다.
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        // 토큰이 있는 경우, 사용자 정보를 디코드하여 표시합니다.
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const username = payload.sub; // 여기에서 사용자 이름을 가져옵니다.
+        usernameElement.textContent = username;
+    }
+</script>
+</body>
+</html>
