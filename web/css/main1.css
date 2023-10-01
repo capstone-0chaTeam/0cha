@@ -1,0 +1,46 @@
+:root {
+  /* App Colors */
+  --color-primary: var(--color-black);
+  --color-primary-variant: var(--color-gray);
+  --color-accent: var(--color-blue);
+  --color-accent-variant: var(--color-orange);
+  --color-text: var(--color-white);
+
+  /* Colors */
+  --color-white:#F6F4F1;
+  --color-red: #EE7272;
+  --color-yellow: #ECE892;
+  --color-blue: #7CABF2;
+  --color-black: #291E1E;
+
+  /* Size */
+  --size-max-width: 120px;
+}
+* {
+    box-sizing: border-box;
+} 
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+p,
+ul {
+  margin: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+a {
+  text-decoration-line: none;
+  color: var(--color-white);
+}
+button {
+  background-color: var(--color-red);
+  outline: 4;
+  border: 0;
+}
+
+button:focus {
+  outline: 1px solid var(--color-accent);
+} 
