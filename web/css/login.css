@@ -36,6 +36,10 @@ margin: 0;
 ul {
 list-style: none;
 padding: 0;
+
+}
+li {
+  display: inline-block; 
 }
 a {
 text-decoration-line: none;
@@ -108,12 +112,8 @@ outline: 1px solid transparent;
   color: #fff;
   font-size: 16px;
   background-color: #484F68;
-  margin-top: 20px;
+  margin-top: 30px;
 }
-.login_button:hover {
-  box-shadow: rgba(104, 102, 102, 0.25) 0px 25px 50px -12px;
-}
-
 
 #login-form > input[type="checkbox"]{
   display: none;
@@ -174,16 +174,38 @@ outline: 1px solid transparent;
   box-shadow: rgba(104, 102, 102, 0.25) 0px 25px 50px -12px;
 }
 -------------------- */
+.hr-sect {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: var(--color-back);
+  font-size: 16px;
+}
+.hr-sect::before,
+.hr-sect::after {
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 40px;
+}
+
+.login-sns-naver{
+  padding-top: 20px;
+  padding-bottom: 18px;
+  padding-left: 10px;
+}
+
 .button_join{
-  width: 300px;
+  font-size: 16px;
+  width: 303px;
   height: 48px;
   display: inline-block;
-  padding: 1rem 0rem;
-  margin: 1rem;
+  padding: 0.8rem 0rem;
   border-radius: 6px;
   background-color: #728768;
-  font-weight: bold;
-
 }
 .button_join:hover {
   box-shadow: rgba(104, 102, 102, 0.25) 0px 25px 50px -12px;
@@ -191,8 +213,7 @@ outline: 1px solid transparent;
 
 
 .login_easy{
-  background-color: var(--color-red);
-  height:100px;
+  height:150px;
 }
 .login_easy-txt{
   color: black;
