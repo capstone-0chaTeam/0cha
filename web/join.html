@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- SEO -->
+ <title>join</title>
+ <meta name="description" content="2023년 2학기 캡스톤 주식시물레이션 게임+웹" />
+ <meta name="author" content="0cha" />
+ <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <!-- (OG) open graph data -->
+  <meta property="og:title" content="2023년 2학기 캡스톤 주식시물레이션 게임+웹" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="배포 후 완성된 url" />
+  <meta property="og:image" content="배포 후 완성된 이미지 url" />
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A300%2C400"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A300%2C400"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <!-- font Awesome -->
+  <script 
+      src="https://kit.fontawesome.com/e5ac6b690a.js" 
+      crossorigin="anonymous"
+  ></script>
+  <!-- css -->
+  <link rel="stylesheet" href="./css/join.css"/>
+</head>
+
+<body>
+<main>
+<section style="background-color: #101D29;" id="#home" class="section">
+<div class="logo">
+  <div onclick="location.href='http://127.0.0.1:5500/main1.html'" class="logo__img">
+    <img class="logo__img-1" src="images/logo.png"/>
+  </div>  
+
+  <div class="login">
+    <div onclick="location.href='http://127.0.0.1:5500/main1.html'" class="login__X">
+    <a> <i class="fa-sharp fa-regular fa-x fa-xl" style="color: #ffffff;"></i> </a>
+    </div>
+  
+
+    <div class="login__box">
+  
+      <div class="login-wrapper">
+        <h1>회원가입</h1>
+        <p class="intro">주식 시물레이션 게임에 오신 것을 환영합니다!</p>
+        <hr style="border: solid 0.3px #2b2e37;">
+        <div class="box"></div>
+        <form method="post" action="서버의url" id="login-form">
+          <input type="name" name="join_name" placeholder="닉네임을 입력해주세요">
+          <input type="email" name="join_Email" placeholder="이메일을 입력해주세요">
+          <input type="id" name="join_ID" placeholder="아이디를 입력해주세요">
+          <input type="password" name="join_PW" placeholder="비밀번호를 입력해주세요">
+          <input class="join_button" type="submit" value="가입하기">
+        </form>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+</section>
+</main>
+</body>
+
+</html>
