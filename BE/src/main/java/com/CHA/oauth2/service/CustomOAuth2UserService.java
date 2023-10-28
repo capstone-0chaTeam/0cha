@@ -1,11 +1,15 @@
 package com.CHA.oauth2.service;
 
 
+import com.CHA.game.Entity.Stock;
+import com.CHA.game.repository.StockRepository;
+import com.CHA.jwt.PasswordUtil;
 import com.CHA.oauth2.CustomOAuth2User;
 import com.CHA.oauth2.OAuthAttributes;
 import com.CHA.user.SocialType;
 import com.CHA.user.User;
 import com.CHA.user.repository.UserRepository;
+import com.CHA.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -25,9 +30,12 @@ import java.util.Map;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final UserRepository userRepository;
+    private final StockRepository stockRepository;
+
 
     private static final String NAVER = "naver";
     private static final String KAKAO = "kakao";
+
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -94,7 +102,35 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
      * 생성된 User 객체를 DB에 저장 : socialType, socialId, email, role 값만 있는 상태
      */
     private User saveUser(OAuthAttributes attributes, SocialType socialType) {
-        User createdUser = attributes.toEntity(socialType, attributes.getOauth2UserInfo());
+        Stock createdStock = stocktoEntity();
+        stockRepository.save(createdStock);
+        User createdUser = attributes.toEntity(socialType, attributes.getOauth2UserInfo(),createdStock);
         return userRepository.save(createdUser);
     }
+
+
+    public Stock stocktoEntity(){
+
+        System.out.println(balanceNumber());
+        return Stock.builder()
+                .account(balanceNumber())
+                .balance(50000000L)
+                .valuationgainandloss_all(0L)
+                .purchaseamount_all(0L)
+                .evaluationamount_all(0L)
+                .build();
+
+    }
+
+    public String balanceNumber() {
+        for (; ; ) {
+            String account = PasswordUtil.generateRandomStockNumber();
+            System.out.println(account + "으로 생성되었습니다.!.!.!.");
+            Optional<Stock> before_account = stockRepository.findByAccount(account);
+            if (!before_account.isPresent()) {
+                return account;
+            }
+        }
+    }
+
 }

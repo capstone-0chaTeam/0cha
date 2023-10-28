@@ -23,8 +23,8 @@ public class User {
     private String password; // 비밀번호
 
     @OneToOne
-    @JoinColumn(name = "balance_id")
-    private Stock stock;
+    @JoinColumn(name = "stock_id")
+    private Stock user_to_stock;
 
     private String nickname; // 닉네임
 

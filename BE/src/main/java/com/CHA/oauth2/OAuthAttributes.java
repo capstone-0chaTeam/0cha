@@ -1,13 +1,15 @@
 package com.CHA.oauth2;
 
+import com.CHA.game.Entity.Stock;
 import com.CHA.oauth2.userinfo.KakaoOAuth2UserInfo;
 import com.CHA.oauth2.userinfo.NaverOAuth2UserInfo;
 import com.CHA.oauth2.userinfo.OAuth2UserInfo;
 import com.CHA.user.Role;
 import com.CHA.user.SocialType;
 import com.CHA.user.User;
-import lombok.Builder;
-import lombok.Getter;
+import com.CHA.user.service.UserService;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 import java.util.UUID;
@@ -52,6 +54,19 @@ public class OAuthAttributes {
                 .oauth2UserInfo(new NaverOAuth2UserInfo(attributes))
                 .build();
     }
+//
+//    public Stock stocktoEntity(){
+//
+//        System.out.println(userService.balanceNumber());
+//        return Stock.builder()
+//                .account(userService.balanceNumber())
+//                .balance(50000000L)
+//                .valuationgainandloss_all(0L)
+//                .purchaseamount_all(0L)
+//                .evaluationamount_all(0L)
+//                .build();
+//
+//    }
 
     /**
      * of메소드로 OAuthAttributes 객체가 생성되어, 유저 정보들이 담긴 OAuth2UserInfo가 소셜 타입별로 주입된 상태
@@ -59,13 +74,17 @@ public class OAuthAttributes {
      * email에는 UUID로 중복 없는 랜덤 값 생성
      * role은 GUEST로 설정
      */
-    public User toEntity(SocialType socialType, OAuth2UserInfo oauth2UserInfo) {
+    public User toEntity(SocialType socialType, OAuth2UserInfo oauth2UserInfo , Stock stock) {
+
         return User.builder()
                 .socialType(socialType)
                 .socialId(oauth2UserInfo.getId())
                 .email(UUID.randomUUID() + "@socialUser.com")
                 .nickname(oauth2UserInfo.getNickname())
+                .user_to_stock(stock)
                 .role(Role.GUEST)
                 .build();
+
+
     }
 }
