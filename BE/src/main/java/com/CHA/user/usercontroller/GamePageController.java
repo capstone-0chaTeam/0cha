@@ -20,10 +20,6 @@ public class GamePageController {
     private final UserService userService;
     private final JwtService jwtService;
 
-    @GetMapping("/home")
-    private String home(){
-        return "/home";
-    }
 
     @PostMapping("/basic-signup")
     public ResponseEntity<String> basicSignUp(@RequestBody UserSignUpDto userSignUpDto) throws Exception {
@@ -33,6 +29,7 @@ public class GamePageController {
         userService.signUp(userSignUpDto);
         return ResponseEntity.ok().body("회원가입 성공");
     }
+
 
 
 

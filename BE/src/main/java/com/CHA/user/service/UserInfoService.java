@@ -4,6 +4,7 @@ import com.CHA.game.Entity.Stock;
 import com.CHA.game.repository.StockRepository;
 import com.CHA.user.User;
 import com.CHA.user.dto.UserInfoDto;
+import com.CHA.user.dto.UserRankerDto;
 import com.CHA.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -52,13 +54,25 @@ public class UserInfoService {
                 .user_id(user.get().getId())
                 .nickname(user.get().getNickname())
                 .balance(user.get().getUser_to_stock().getBalance())
+                .account(user.get().getUser_to_stock().getAccount())
                 .build();
 
         return userInfoDto;
     }
 
-    public List<Stock> usersInfo_rank(){
+    public List<UserRankerDto> usersInfo_rank(){
 
-        return stockRepository.findTop3ByOrderByBalance();
+        List<Stock> ranking = stockRepository.findTop3ByOrderByBalanceDesc();
+        List<UserRankerDto> ranker =  ranking
+                .stream()
+                .map( rank -> new UserRankerDto(rank.getUser().getNickname(), rank.getAccount(), rank.getBalance()))
+                .collect(Collectors.toList());
+
+//        List<String> nicknames = ranker.stream()
+//                .map(stock -> stock.getUser().getNickname())
+//                .collect(Collectors.toList());
+
+        return ranker;
+
     }
 }

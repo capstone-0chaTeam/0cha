@@ -14,6 +14,10 @@ spring:
   #  thymeleaf:
   #    cache: false
 
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     open-in-view: false

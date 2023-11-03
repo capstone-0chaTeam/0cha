@@ -23,5 +23,4 @@ public class UserSignUpDto {
         return nickname;
     }
 
-
 }

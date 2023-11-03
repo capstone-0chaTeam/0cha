@@ -3,6 +3,7 @@ package com.CHA.user.usercontroller;
 import com.CHA.game.Entity.Stock;
 import com.CHA.jwt.service.JwtService;
 import com.CHA.user.dto.UserInfoDto;
+import com.CHA.user.dto.UserRankerDto;
 import com.CHA.user.service.UserInfoService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -29,38 +30,33 @@ public class UserInfoController {
 
     // /user1 request를 받아서 이메일을 반환해준다.
     //@RequestHeader 어노테이션을 활용해서 리펙토링 해보기
+    //@RequestHeader("Authorization") String authorizationHeader 형식으로
     @GetMapping("/Id_NickName_Balance")
-    public ResponseEntity<String> userInfo(HttpServletRequest request){
+    public ResponseEntity<UserInfoDto> userInfo(HttpServletRequest request){
 
-        System.out.println(request.getHeader("Authorization"));
         //Optional안에 uesremail이 담겨있음
         Optional<String> useremail = jwtService.extractAccessTokenToUserInfo(request);
-        System.out.println(useremail);
         //userinfo User형식
 
         UserInfoDto userInfoDto = userInfoService.userInfo_Id_NickName_Balance(useremail);
-        System.out.println(userInfoDto.getUser_id());
-        System.out.println(userInfoDto.getBalance());
-        System.out.println(userInfoDto.getNickname());
-        System.out.println(userInfoDto.getBalance());
-        return ResponseEntity.ok().body("성공"+userInfoDto);
+        System.out.println(userInfoDto.getAccount());
+
+        return ResponseEntity.ok(userInfoDto);
+
     }
 
+
+    //RANK했을때 user가 3명 이하면 INdexOutOfBoundsExceoption 뜸
     @GetMapping("/rank")
-    public ResponseEntity<String> rank(){
+    public ResponseEntity<List<UserRankerDto>> rank(){       // 시큐리티 설정에서 도메인 열어주기
 
-        List<Stock> rank = userInfoService.usersInfo_rank();
+        List<UserRankerDto> ranker = userInfoService.usersInfo_rank();
 
-        log.info("rank : {}" ,rank);
 
-        log.info("rank : {}" ,rank.get(0).getUser().getEmail());
-        log.info("rank : {}" ,rank.get(1).getUser().getEmail());
-        log.info("rank : {}" ,rank.get(2).getUser().getEmail());
-        log.info("rank : {}" ,rank.get(0).getUser().getId());
-        log.info("rank : {}" ,rank.get(1).getUser().getId());
-        log.info("rank : {}" ,rank.get(2).getUser().getId());
 
-        return ResponseEntity.ok().body("good" + rank);
+        log.info("rank : {}" ,ranker);
+
+
+        return ResponseEntity.ok(ranker);
     }
-
 }

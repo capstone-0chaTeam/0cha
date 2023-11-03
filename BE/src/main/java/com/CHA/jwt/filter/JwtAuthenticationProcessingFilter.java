@@ -41,6 +41,7 @@ public class JwtAuthenticationProcessingFilter extends OncePerRequestFilter {
     private static final String NO_CHECK_URL2 = "/home"; // "/login"으로 들어오는 요청은 Filter 작동 X
     private static final String NO_CHECK_URL3 = "/basic-signup"; // "/login"으로 들어오는 요청은 Filter 작동 X
     private static final String NO_CHECK_URL4 = "/user-login";
+    private static final String NO_CHECK_URL5 = "/Game/**";
 
     private final JwtService jwtService;
     private final UserRepository userRepository;
@@ -54,16 +55,20 @@ public class JwtAuthenticationProcessingFilter extends OncePerRequestFilter {
             return; // return으로 이후 현재 필터 진행 막기 (안해주면 아래로 내려가서 계속 필터 진행시킴)
         }
         if (request.getRequestURI().equals(NO_CHECK_URL2)) {
-            filterChain.doFilter(request, response); // "/login" 요청이 들어오면, 다음 필터 호출
-            return; // return으로 이후 현재 필터 진행 막기 (안해주면 아래로 내려가서 계속 필터 진행시킴)
+            filterChain.doFilter(request, response);
+            return;
         }
         if (request.getRequestURI().equals(NO_CHECK_URL3)) {
-            filterChain.doFilter(request, response); // "/login" 요청이 들어오면, 다음 필터 호출
-            return; // return으로 이후 현재 필터 진행 막기 (안해주면 아래로 내려가서 계속 필터 진행시킴)
+            filterChain.doFilter(request, response);
+            return;
         }
         if (request.getRequestURI().equals(NO_CHECK_URL4)) {
-            filterChain.doFilter(request, response); // "/login" 요청이 들어오면, 다음 필터 호출
-            return; // return으로 이후 현재 필터 진행 막기 (안해주면 아래로 내려가서 계속 필터 진행시킴)
+            filterChain.doFilter(request, response);
+            return;
+        }
+        if (request.getRequestURI().equals(NO_CHECK_URL5)) {
+            filterChain.doFilter(request, response);
+            return;
         }
 
         // 사용자 요청 헤더에서 RefreshToken 추출
