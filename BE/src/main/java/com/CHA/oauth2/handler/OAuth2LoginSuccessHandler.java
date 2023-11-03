@@ -27,7 +27,7 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
     private final JwtService jwtService;
     private final UserRepository userRepository;
 
-    private static final String BASE_DOMAIN = "http://127.0.0.1:5500/success.html";
+    private static final String BASE_DOMAIN = "http://127.0.0.1:5500/main.html"; //10.31   수정
     private static final String QUERY_START_MARK = "?";
     private static final String QUERY_AND_MARK = "&";
     private static final String QUERY_PARAM_ACCESS_TOKEN_KEY = "accessToken=";

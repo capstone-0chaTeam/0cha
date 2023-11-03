@@ -42,6 +42,7 @@ public class UserService {
         Stock stock = Stock.builder()
                 .account(balanceNumber())
                 .balance(50000000L)
+                .cash(0L)
                 .valuationgainandloss_all(0L)
                 .purchaseamount_all(0L)
                 .evaluationamount_all(0L)
