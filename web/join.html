@@ -27,35 +27,37 @@
   ></script>
   <!-- css -->
   <link rel="stylesheet" href="./css/join.css"/>
+  <script src="/client/signup.js"></script>
+  <!-- <script src="/client/api.js"></script> -->
 </head>
 
 <body>
 <main>
 <section style="background-color: #101D29;" id="#home" class="section">
 <div class="logo">
-  <div onclick="location.href='http://127.0.0.1:5500/main1.html'" class="logo__img">
-    <img class="logo__img-1" src="images/logo.png"/>
+  <div onclick="location.href='http://127.0.0.1:5500/main.html'" class="logo__img">
+    <img style=" width: 500px"  src="images/logo.png"/>
   </div>  
 
-  <div class="login">
-    <div onclick="location.href='http://127.0.0.1:5500/main1.html'" class="login__X">
+  <div class="signup">
+    <div onclick="location.href='http://127.0.0.1:5500/main.html'" class="signup__X">
     <a> <i class="fa-sharp fa-regular fa-x fa-xl" style="color: #ffffff;"></i> </a>
     </div>
   
 
-    <div class="login__box">
+    <div class="signup__box">
   
-      <div class="login-wrapper">
+      <div class="signup-wrapper">
         <h1>회원가입</h1>
         <p class="intro">주식 시물레이션 게임에 오신 것을 환영합니다!</p>
         <hr style="border: solid 0.3px #2b2e37;">
         <div class="box"></div>
-        <form method="post" action="서버의url" id="login-form">
-          <input type="name" name="join_name" placeholder="닉네임을 입력해주세요">
-          <input type="email" name="join_Email" placeholder="이메일을 입력해주세요">
-          <input type="id" name="join_ID" placeholder="아이디를 입력해주세요">
-          <input type="password" name="join_PW" placeholder="비밀번호를 입력해주세요">
-          <input class="join_button" type="submit" value="가입하기">
+        <form id="signup-form">
+          <input type=nick"name" name="nickname" id="nickname" placeholder="닉네임을 입력해주세요" required>
+          <input type="email" name="email" id="email"placeholder="이메일을 입력해주세요" required>
+          <input type="id" name="id" id="id" placeholder="아이디를 입력해주세요" required>
+          <input type="password" name="password" id="password" placeholder="비밀번호를 입력해주세요" required>
+          <input  class="join_button" type="submit" value="가입하기">
         </form>
       </div>
     </div>

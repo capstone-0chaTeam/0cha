@@ -27,18 +27,31 @@
   ></script>
   <!-- css -->
   <link rel="stylesheet" href="./css/login.css"/>
+  <script src="/client/login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
+  <script>
+    axios({
+        get: 'post',
+        url: 'https://1c0750c8-a613-4aa0-b953-aa8315c04862.mock.pstmn.io/testServer',
+        responseType: 'json'
+        })
+        .then(function (response) {
+           console.log(response.data);
+        });
+</script>
+
 <main>
 <section style="background-color: #101D29;" id="#home" class="section">
 <div class="logo">
-  <div onclick="location.href='http://127.0.0.1:5500/main1.html'" class="logo__img">
-    <img class="logo__img-1" src="images/logo.png"/>
+  <div class="logo__img" onclick="location.href='http://127.0.0.1:5500/main.html'">
+    <img style=" width: 500px" src="images/logo.png" />
   </div>  
 
   <div class="login">
-    <div onclick="location.href='http://127.0.0.1:5500/main1.html'" class="login__X">
+    <div onclick="location.href='http://127.0.0.1:5500/main.html'" class="login__X">
     <a> <i class="fa-sharp fa-regular fa-x fa-xl" style="color: #ffffff;"></i> </a>
     </div>
   
@@ -48,14 +61,18 @@
       <div class="login-wrapper">
         <h1>로그인</h1>
 
-        <form method="post" action="서버의url" id="login-form">
-          <input type="text" name="login_ID" placeholder="Email">
-          <input type="password" name="login_PW" placeholder="Password">
-          <label for="remember-check">
-            <input type="checkbox" id="remember-check">    아이디 저장하기
-          </label>
+
+        <div>
+          <!-- method="POST" -->
+        <form id="login-form"> 
+          <input type="text" id="email" name="email" placeholder="Email" >
+          <input type="password" name="password" id="password" placeholder="Password"> 
           <input class=login_button" type="submit" value="Login">
+
+
+
         </form>
+            <div id="message"></div>
       </div>
 
       <div class="login_easy">
@@ -64,13 +81,18 @@
         <div>
           <ul>
             <li class="login-sns-kakao">
-              <a href="#"> <img style="width: 40px" src="images/logo-kakao.png"> </a>
+
+              <a href="http://localhost:8082/oauth2/authorization/kakao"> <img style="width: 40px" src="images/logo-kakao.png"> 
+                <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+                
+              </a>
             </li>
 
             <li class="login-sns-naver">
-              <a href="#"> <img style="width: 40px" src="images/logo-naver.png"> </a>
+              <a href="http://localhost:8082/oauth2/authorization/naver"> <img style="width: 40px" src="images/logo-naver.png"> </a>
             </li>
           </ul>
+          <div id="message" style="color: red;"></div> <!-- 오류 메시지를 표시할 요소 -->
           <a class="button_join" href="http://127.0.0.1:5500/join.html"> 회원가입 </a>
         </div>
       </div>

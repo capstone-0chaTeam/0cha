@@ -67,9 +67,6 @@ outline: 1px solid transparent;
   object-fit: cover;
   width: 55%;
 }
-.logo__img-1{
-  width: 500px;
-}
 .login__X{
   text-align: right;
   line-height: 2rem;

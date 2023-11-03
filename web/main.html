@@ -8,7 +8,7 @@
  <title>Stock Stimulation</title>
  <meta name="description" content="2023년 2학기 캡스톤 주식시물레이션 게임+웹" />
  <meta name="author" content="0cha" />
- <link rel="shortcut icon" href="images/stFavicon.ico" type="image/x-icon">
+ <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <!-- (OG) open graph data -->
   <meta property="og:title" content="2023년 2학기 캡스톤 주식시물레이션 게임+웹" />
   <meta property="og:type" content="website" />
@@ -28,16 +28,20 @@
   <!-- css -->
   <link rel="stylesheet" href="./css/main1.css"/>
   <!-- javascript -->
-  <script type="module" src="src/main.js" defer></script>
+
+  
 </head>
 <body>
+
+
+
 <!--Main-->
 <main>
   <!--Home-->
   <section id="home" class="section">
     <div class="home__logo">
       <div class="home__logo__img">
-        <img style="width: 500px" src="images/logo.png" />
+        <img style=" width: 500px" src="images/logo.png" />
       </div>      
       <div class="home__logo__txt">
         <p class="home__logo__txt_1">성공한 투자자가 되기 위한 첫 걸음</p>
@@ -70,9 +74,13 @@
         <a class="home__nav_top-2" href="http://127.0.0.1:5500/howtoplay.html"> 게임 방법 <br/> </a>
       </ul>
       <ul class="home__nav_bottom">
-        <a class="home__nav_bottom-1" href="#gamestart">게임시작 <br/> </a>
-        <a class="home__nav_bottom-2" href="http://127.0.0.1:5500/login.html">로그인 <br/> </a>
+        <a class="home__nav_bottom-1" onclick="handleStart()">게임시작 <br/> </a>
+            <script>function handleStart(){
+              alert("로그인이 필요합니다.");}</script>
+
+        <a class="home__nav_bottom-2" id="loginButton" href="http://127.0.0.1:5500/login.html">로그인 <br/> </a>
       </ul>
+      <div id="intro"></div>
     </div>
     
 
@@ -88,23 +96,25 @@
       <p class="rank__title__assistance">오늘의 주식 투자왕</p>
       </div>
       <div class="rank__show">   <!--API-->
-        <div class="rank__show__top1">
-          <p>3,499,987,844 원</p>   
-          <img class="rank__show__img-crown" style="width: 50%" src="images/rank-1-accessories.png">
-          <img class="rank__show__img-Character" style="width: 50%" src="images/rank-1.png">
-          <div class="rank__show__top1_box">닉네임1</div>
+        <div class="rank__show_in">
+          <div class="rank__show__top1">
+            <p>3,499,987,844 원 </p>   
+            <img class="rank__show__img-Character" style="width: 50%" src="images/rank-1.png">
+            <div class="rank__show__top1_box">닉네임1</div>
+          </div>
+          <div class="rank__show__top2">
+            <p>2,499,987,844 원 </p>   
+            <img class="rank__show__img-Character" style="width: 50%" src="images/rank-2.png">
+            <div class="rank__show__top2_box">닉네임2</div>
+          </div>
+          <div class="rank__show__top3">
+            <p>1,499,987,844 원 </p>  
+            <img class="rank__show__img-Character" style="width: 50%" src="images/rank-3.png">
+            <div class="rank__show__top3_box">닉네임3</div>
+          </div>
         </div>
-        <div class="rank__show__top2">
-          <p>2,499,987,844 원</p>   
-          <img class="rank__show__img-Character" style="width: 50%" src="images/rank-2.png">
-          <div class="rank__show__top2_box">닉네임2</div>
+        <div class="bottom_box"  style="position:relative; z-index: 1;">
         </div>
-        <div class="rank__show__top3">
-          <p>1,499,987,844 원</p>  
-          <img class="rank__show__img-Character" style="width: 50%" src="images/rank-3.png">
-          <div class="rank__show__top3_box">닉네임3</div>
-        </div>
-        <div></div>
       </div>
     </div>
     <!-- 실시간 순위-->
@@ -144,17 +154,18 @@
   </section>
 </main>
 <!--Footer-->
-<footer class="section">
-  <ul>
-    <li>회사소개</li>
-    <li>이용약관</li>
-    <li>개인정보처리방침</li>
+<footer class="footer">
+  <ul class="footer__title">
+    <li><div class="footer__title__box">회사소개</div></li>
+    <li><div class="footer__title__box">이용약관</div></li>
+    <li><div class="footer__title__box">개인정보처리방침</div></li>
   </ul>
-  <div>
-    <div>(주)영차</div>
+  <div class="footer__line"></div>
+  <div class="footer__info">
+    <div>(주) 영차</div>
     <div><a href="https://url.kr/6u54g1">(24252) 강원특별자치도 춘천시 한림대학길 1</a></div>
-    <div><span>팩스 : 1234-5678</span>
-      <span><a href="tel:+82.1234.5678">전화 : 1234-5678</a></span></div>
+    <div><span >팩스 : 1234-5678</span>
+      <span class="footer__info__tel"><a href="tel:+82.1234.5678">전화 : 1234-5678</a></span></div>
     <a href="mailto:1234@gmail.com">E-mail: 1234@gmail.com</a>
   </div>
 </footer>
