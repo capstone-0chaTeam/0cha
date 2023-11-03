@@ -10,7 +10,10 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
 
     Optional<Stock> findByAccount(String account);
 
-    List<Stock> findTop3ByOrderByBalance();
+
+    List<Stock> findTop3ByOrderByBalanceDesc();
+
+    Optional<Stock> findById(Long id);
 
 
 }

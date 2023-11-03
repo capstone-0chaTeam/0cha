@@ -20,15 +20,5 @@ public class UserController {
         return "회원가입 성공";
     }
 
-    @GetMapping("/jwt-test")
-    public String jwtTest() {
-        return "jwtTest 요청 성공";
-    }
-
-    @GetMapping("/oauth2/sign-up")
-    public String showOAuth2SignUpForm() {
-        return "/oauth2-sign-up";
-    }
-
 
 }

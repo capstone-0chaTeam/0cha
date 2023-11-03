@@ -1,30 +1,16 @@
 package com.CHA.user.dto;
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
-//단지 get해서 사용하는거여서
-
-@AllArgsConstructor
 @Builder
-@Setter
-@Getter
-@NoArgsConstructor
-public class UserInfoDto {
+@AllArgsConstructor
+public class UserRankerDto {
 
-
-    private Long user_id;
-    private String nickname;
-    private String account;
+    private String nickname ;
+    private String account ;
     private Long balance;
-
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
 
     public String getNickname() {
         return nickname;
