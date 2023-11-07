@@ -156,7 +156,9 @@ display: flex;
 /*rank*/
 #rank{
   text-align: center;
-  background-color: var(--color-back);
+  background: rgb(22,34,45);
+  background: rgb(19,31,41);
+  background: linear-gradient(180deg, rgb(17, 29, 39) 8%, rgba(19,59,75,1) 49%, rgba(17, 29, 39) 77%);
   padding: 8rem 4rem;
   width: 100%;
   display: flex;
@@ -197,6 +199,7 @@ height: 350px;
  padding:1rem;
  margin-left: 1.5rem;
  margin-right: 1.5rem;
+ color: var(--color-black);
 
 }
 .rank__show__top2{
@@ -209,6 +212,7 @@ height: 350px;
   padding-top: 1rem;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+  color: var(--color-black);
  }
 .rank__show__top3{
   width:33%;
@@ -220,6 +224,7 @@ height: 350px;
   padding-top: 1rem;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+  color: var(--color-black);
  }
 .rank__show__img-Character{
   width: 20px;
@@ -243,11 +248,19 @@ height: 350px;
 .chart__live{ 
   height: 380px;
   width: 450px;
-
   background-color: var(--color-white);
   border-radius: 10px;
 }
-
+.v{
+  padding: 10px 20px;
+}
+.chart__in{
+  width: 410px;
+  height: 310px;
+  overflow-y: scroll;
+  text-align: center;
+  background-color: #F6F4F1;
+}
 /*footer*/
 footer{
   position: relative;
