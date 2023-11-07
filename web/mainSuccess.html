@@ -28,8 +28,8 @@
   <!-- css -->
   <link rel="stylesheet" href="./css/main1.css"/>
   <!-- javascript -->
-  <script type="module" src="client/index.js" defer></script>
-  <script type="module" src="client/main.js" defer></script>
+  <script src="/client/main.js" ></script>
+
   
 </head>
 <body>
@@ -69,14 +69,17 @@
     <div class="home__down">
       <a href="#rank"> <img style="width: 70px;" src="images/scroll.png"></a>
     </div>
-    <div class="home__nav"> 
+    <div class="home__nav">
       <ul class="home__nav_top">
         <a class="home__nav_top-1" href="https://www.bok.or.kr/ebook/ecatalog5.jsp?Dir=359" target="_blank">주식 용어 <br/> </a> 
         <a class="home__nav_top-2" href="http://127.0.0.1:5500/howtoplay.html"> 게임 방법 <br/> </a>
       </ul>
       <ul class="home__nav_bottom">
-        <a class="home__nav_bottom-1" href="#gamestart">게임시작 <br/> </a>
-        <a class="home__nav_bottom-2" id="loginButton" href="http://127.0.0.1:5500/main.html">로그아웃 <br/> </a>
+        <a class="home__nav_bottom-1" onclick="handleStart()">게임시작 <br/> </a>
+            <script>function handleStart(){
+              alert("로그인이 필요합니다.");}</script>
+
+        <a class="home__nav_bottom-2" id="loginButton" href="http://127.0.0.1:5500/login.html">로그인 <br/> </a>
       </ul>
       <div id="intro"></div>
     </div>
@@ -96,19 +99,19 @@
       <div class="rank__show">   <!--API-->
         <div class="rank__show_in">
           <div class="rank__show__top1">
-            <p>3,499,987,844 원 </p>   
+            <p id="account1"> </p>   
             <img class="rank__show__img-Character" style="width: 50%" src="images/rank-1.png">
-            <div class="rank__show__top1_box">닉네임1</div>
+            <div id="nickname1" class="rank__show__top1_box"></div>
           </div>
           <div class="rank__show__top2">
-            <p>2,499,987,844 원 </p>   
+            <p id="account2"> </p>   
             <img class="rank__show__img-Character" style="width: 50%" src="images/rank-2.png">
-            <div class="rank__show__top2_box">닉네임2</div>
+            <div id="nickname2" class="rank__show__top2_box"></div>
           </div>
           <div class="rank__show__top3">
-            <p>1,499,987,844 원 </p>  
+            <p id="account3"></p>  
             <img class="rank__show__img-Character" style="width: 50%" src="images/rank-3.png">
-            <div class="rank__show__top3_box">닉네임3</div>
+            <div id="nickname3" class="rank__show__top3_box"></div>
           </div>
         </div>
         <div class="bottom_box"  style="position:relative; z-index: 1;">
@@ -118,36 +121,38 @@
     <!-- 실시간 순위-->
     <div class="chart">
       <p class="chart__title">실시간 순위</p>
-      <div class="chart__live">
-        <div><span>순위</span><span>닉네임</span><span>평가손익</span></div>
-        <hr align="center" style="border:solid 1px #291E1E;">
-          <ul>
-            <li>  <!--db-->
-              <div><span>순위</span><span>닉네임</span><span>평가손익</span></div>
-            </li>
-            <li>
-              <div><span>순위</span><span>닉네임</span><span>평가손익</span></div>
-            </li>
-            <li>
-              <div><span>순위</span><span>닉네임</span><span>평가손익</span></div>
-            </li>
-            <li>
-              <div><span>순위</span><span>닉네임</span><span>평가손익</span></div>
-            </li>
-            <li>
-              <div><span>순위</span><span>닉네임</span><span>평가손익</span></div>
-            </li>
-            <li>
-              <div><span>순위</span><span>닉네임</span><span>평가손익</span></div>
-            </li>
-            <li>
-              <div><span>순위</span><span>닉네임</span><span>평가손익</span></div>
-            </li>
-          </ul> 
-        
+      
+      <div class="chart__live">    
+        <div class="v">
+          <table>
+            <colgroup>
+              <col width="100px">
+              <col width="120px">
+              <col width="200px">
+            </colgroup>
+            <thead>
+              <tr>
+                <td>순위</td>
+                <td>닉네임</td>
+                <td>잔고</td>
+              </tr>
+            </thead>
+          </table>
+          <hr style="border:solid 0.5px #291E1E;">
+          <div class="chart__in">
+            <table id="rankDB">
+              <colgroup>
+                <col width="100px">
+                <col width="120px">
+                <col width="200px">
+              </colgroup>
+              <tbody>
 
-
-      </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
     </div>
   </section>
 </main>
