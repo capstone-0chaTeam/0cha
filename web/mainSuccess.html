@@ -28,7 +28,9 @@
   <!-- css -->
   <link rel="stylesheet" href="./css/main1.css"/>
   <!-- javascript -->
-  <script src="/client/main.js" ></script>
+  <!-- <script src="/client/main.js" ></script> -->
+  <script src="/client/rank.js"></script>
+  <script src="/client/index.js"></script>
 
   
 </head>
@@ -66,20 +68,64 @@
         </script>
       
     </div>
-    <div class="home__down">
-      <a href="#rank"> <img style="width: 70px;" src="images/scroll.png"></a>
+
+
+
+    <div class="home__middle">
+
+          <div class="myinfo">
+                
+                <div class="touch">
+                  <span>반갑습니다.</span>
+                    <span id="homeNickname">@</span>
+                    <span>님</span>
+                    <div class="touch_side">나의 정보를 확인해보세요</div> 
+                </div>
+                <div class="box">
+                  <div class="boxIn_head">My infomation</div>
+                        <div class="boxIn_imgbox">
+                            <img class="boxIn_img"
+                            style="width: 145px" src="./images/infoImg.png">
+                        </div>
+                        <div class="boxIn">
+                          <table>
+                            <tr>
+                            <td> 닉네임  </td>
+                            <td width="10px;">| </td>
+                            <td><p id="homeNickname">@</p></td>
+                            </tr>
+                            <tr>
+                              <td> 잔고  </td>
+                              <td width="10px;">| </td>
+                              <td><p id="homeBalance">@</p></td>
+                            </tr>
+                            <tr>
+                              <td> 계좌번호  </td>
+                              <td width="10px;">| </td>
+                              <td><p id="homeAccount">@</p></td>
+                            </tr>
+                          </table>
+                        </div>
+                </div>
+
+          </div>
+
+
+          <div class="home__down">
+            <a href="#rank"> <img style="width: 70px;" src="images/scroll.png"></a>
+          </div>
+
     </div>
+
     <div class="home__nav">
       <ul class="home__nav_top">
         <a class="home__nav_top-1" href="https://www.bok.or.kr/ebook/ecatalog5.jsp?Dir=359" target="_blank">주식 용어 <br/> </a> 
         <a class="home__nav_top-2" href="http://127.0.0.1:5500/howtoplay.html"> 게임 방법 <br/> </a>
       </ul>
       <ul class="home__nav_bottom">
-        <a class="home__nav_bottom-1" onclick="handleStart()">게임시작 <br/> </a>
-            <script>function handleStart(){
-              alert("로그인이 필요합니다.");}</script>
-
-        <a class="home__nav_bottom-2" id="loginButton" href="http://127.0.0.1:5500/login.html">로그인 <br/> </a>
+        <a class="home__nav_bottom-1">게임시작 <br/> </a>
+        <!-- onclick="startGame() -->
+        <a class="home__nav_bottom-2" id="loginButton" href="http://127.0.0.1:5500/main.html">로그아웃<br/> </a>
       </ul>
       <div id="intro"></div>
     </div>

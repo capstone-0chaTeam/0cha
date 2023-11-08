@@ -1,7 +1,6 @@
 const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://localhost:8082"
 
-
 window.onload = () => {
     console.log("로딩되었음")
 }
@@ -14,52 +13,63 @@ window.onload = () => {
             loginForm.addEventListener("submit", function(event) {
                 event.preventDefault();
 
-                const emailInput = document.getElementById('email');
+                const idInput = document.getElementById('id');
                 const passwordInput = document.getElementById('password');
 
-                if (checkNullInput(emailInput) && checkNullInput(passwordInput)) {
-                    const email = emailInput.value;
+                if (checkNullInput(idInput) && checkNullInput(passwordInput)) {
+                    const id = idInput.value;
                     const password = passwordInput.value;
 
-                    fetch('${backend_base_url}/login', {
+
+
+
+                    fetch("http://localhost:8082/login", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            email: email,
+                            email: id,
                             password: password
                         })
                     })
                     .then(response => {
                             console.log(response.data);
                         console.log(response.status);
-                        console.log(email);
                         console.log(password);
                         if (response.ok) { // HTTP 상태 코드가 200일 경우 
                             console.log("서버에 제대로 전달했는지 로그 찍어서 확인"+response);
                             console.log(response.headers);
                             accessToken = response.headers.get('Authorization');
                             refreshToken = response.headers.get('Authorization-Refresh');
-                            localStorage.setItem('Authorization', accessToken);
-                            localStorage.setItem('Authorization-Refresh', refreshToken);
-                          
-
+                         
                             if (response.headers.get('Authorization') === null) {
                                 alert("아이디 혹은 비밀번호가 틀렸습니다.");
                                 return;
                             }
-                            window.location.href = '${frontend_base_url}/mainSuccess.html';
+
+                            localStorage.setItem('accessToken', accessToken);
+                            localStorage.setItem('Authorization-Refresh', refreshToken);
+                
+
+
+                            console.log("로그인 완료. 메인화면으로 넘어갑니다")
+                            window.location.href = "http://127.0.0.1:5500/mainSuccess.html";
                         } else {
-                            alert("이메일 또는 비밀번호가 잘못되었습니다.");
+                            alert("아이디 또는 비밀번호가 잘못되었습니다.");
+                            return;
                         }
                     })
                     .catch(error => {
                         console.error(error);
                     });
+
+
+
+
                 } else {
                     // 아이디나 비밀번호 중 하나라도 입력되지 않았을 경우 처리
-                    const emptyField = emailInput.value === '' ? emailInput : passwordInput;
+                    const emptyField = idInput.value === '' ? idInput : passwordInput;
                     emptyField.focus();
                 }
             });
@@ -74,3 +84,6 @@ window.onload = () => {
                 return true;
             }
         }
+
+
+        

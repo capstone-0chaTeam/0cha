@@ -32,16 +32,6 @@
 </head>
 
 <body>
-  <script>
-    axios({
-        get: 'post',
-        url: 'https://1c0750c8-a613-4aa0-b953-aa8315c04862.mock.pstmn.io/testServer',
-        responseType: 'json'
-        })
-        .then(function (response) {
-           console.log(response.data);
-        });
-</script>
 
 <main>
 <section style="background-color: #101D29;" id="#home" class="section">
@@ -65,11 +55,10 @@
         <div>
           <!-- method="POST" -->
         <form id="login-form"> 
-          <input type="text" id="email" name="email" placeholder="Email" >
+          <input type="text" id="id" name="id" placeholder="id" >
           <input type="password" name="password" id="password" placeholder="Password"> 
-          <input class=login_button" type="submit" value="Login">
-
-
+          <button class="login_button" type="submit">Login</button>
+         
 
         </form>
             <div id="message"></div>

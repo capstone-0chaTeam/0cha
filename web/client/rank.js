@@ -1,13 +1,11 @@
 const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://localhost:8082"
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2"
-
-
-
-fetch('${backend_base_url}/userinfo/rank', {
+const token1 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2"
+// http://localhost:8082/userInfo/rank
+fetch("http://localhost:8082/userInfo/rank", {
     method: 'GET',
     headers: {
-        'Authorization': token
+        'Authorization': token1
     }
 })
 .then(response => response.json())
@@ -21,13 +19,13 @@ fetch('${backend_base_url}/userinfo/rank', {
 
 function topRanking(data){
      document.getElementById("nickname1").textContent = data[0].nickname;
-     document.getElementById("account1").textContent = data[0].account +" 원";
+     document.getElementById("account1").textContent = data[0].balance +" 원";
  
      document.getElementById("nickname2").textContent = data[1].nickname;
-     document.getElementById("account2").textContent = data[1].account+" 원";
+     document.getElementById("account2").textContent = data[1].balance+" 원";
  
      document.getElementById("nickname3").textContent = data[2].nickname;
-     document.getElementById("account3").textContent = data[2].account+" 원";
+     document.getElementById("account3").textContent = data[2].balance+" 원";
 };
 function ranking(data){
     const table= document.getElementById("rankDB");
@@ -45,7 +43,7 @@ function ranking(data){
         row.appendChild(nicknameCell);
 
         const accountCell = document.createElement('td');
-        accountCell.textContent = data.account + " 원";
+        accountCell.textContent = data.balance + " 원";
         row.appendChild(accountCell);
 
         tbody.appendChild(row);

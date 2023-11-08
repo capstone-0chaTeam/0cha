@@ -69,9 +69,11 @@ display: flex;
 }
 .home__logo__img{
   object-fit: cover;
+  height: 30%;
+  padding-left: 8%;
 }
 .home__logo__txt{
-  padding-top: 15%;
+  padding-top: 40%;
   padding-left: 8%;
   width:max-content;
   line-height: 3rem;
@@ -92,13 +94,88 @@ display: flex;
   font-size: 0.8rem;
   color: #F9EAC4;
 }
-.home__down{
+
+.space{
+  letter-spacing: 10px;
+}
+.home__middle{
   width: 33%;
+  text-align: center;
+  scroll-behavior: smooth;
+  
+} 
+.myinfo{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 60%;
+  margin: 0;
+  display: inline-block;
+}
+.touch{
+  margin-top: -50px;
+  padding-right: 10px;
+  width: 100%;
+  height: 50px;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+.touch_side{
+  font-size: 1rem;
+  margin-top: 30px;
+  color: #8b98b4;
+}
+.box {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  background-color: #99caea;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-200px);
+  transition: opacity 0.3s, transform 0.3s;
+  border-radius: 4px;
+}
+
+.box:hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+.boxIn_head{
+  color: #474747;
+  height: 30px;
+  vertical-align: middle;
+}
+.boxIn_imgbox{
+  background-color: #fff8de;
+  border-radius: 6px;
+}
+.boxIn_img{
+  object-fit: cover;
+  height: 50%;
+}
+.boxIn{
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 6px;
+  text-align: left;
+  margin-top: 10px;
+}
+.home__down{
   padding-top: 40%;
   text-align: center;
   scroll-behavior: smooth;
   
 } 
+
+
 .home__nav{
   font-size: 1.2rem;
   width: 33%;
