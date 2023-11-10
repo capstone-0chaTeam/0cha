@@ -15,13 +15,10 @@
     fetch(serverUrl, {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImV4cCI6MTY5OTQ1NTM5NywiZW1haWwiOiIxMjMifQ.PYRKmnpf5zcR25D0kN9ka1y0nCNuE53bUHf-eqawCNb93EOlfDjmL9nrVpHuncBvENnDZTXoc1qdJhINtruZNw',
-            // 'Authorization' : accesstoken,
-            'Content-Type': 'application/json'
+            'Authorization': 'Bearer ${accessToken}' ,
         }
     })
     .then(response => response.json())
-    
     .then(data => {
         //웹화면에 이름 
         console.log(data)

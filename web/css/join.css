@@ -57,11 +57,12 @@ outline: 1px solid transparent;
 .logo{
   padding: 6rem 5rem;
   display: flex;
-  height: 900px;
+  height: 100vh;
 }
 .logo__img{
   object-fit: cover;
   width: 55%;
+  padding-left: 2%;
 }
 .signup__X{
   text-align: right;
@@ -178,8 +179,6 @@ outline: 1px solid transparent;
 .button_join:hover {
   box-shadow: rgba(104, 102, 102, 0.25) 0px 25px 50px -12px;
 }
-
-
 .login_easy{
   background-color: var(--color-red);
   height:100px;

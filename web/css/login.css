@@ -61,11 +61,12 @@ outline: 1px solid transparent;
 .logo{
   padding: 6rem 5rem;
   display: flex;
-  height: 900px;
+  height: 100vh;
 }
 .logo__img{
   object-fit: cover;
   width: 55%;
+  padding-left: 2%;
 }
 .login__X{
   text-align: right;
