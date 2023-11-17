@@ -2,16 +2,13 @@ package com.CHA.user.service;
 
 
 import com.CHA.game.Entity.Stock;
-import com.CHA.game.Entity.StockList;
 import com.CHA.game.repository.StockRepository;
 import com.CHA.jwt.PasswordUtil;
 import com.CHA.user.Role;
 import com.CHA.user.User;
-import com.CHA.user.dto.UserInfoDto;
 import com.CHA.user.dto.UserSignUpDto;
 import com.CHA.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,14 +35,11 @@ public class UserService {
         }
 
 
-
         Stock stock = Stock.builder()
                 .account(balanceNumber())
                 .balance(50000000L)
-                .cash(0L)
-                .valuationgainandloss_all(0L)
+                .cash(50000000L)
                 .purchaseamount_all(0L)
-                .evaluationamount_all(0L)
                 .build();
 
             //계좌번호 만들고 넣기 만약 같은게 있다면 다른거 넣기
@@ -73,7 +67,6 @@ public class UserService {
     public String balanceNumber() {
         for (; ; ) {
             String account = PasswordUtil.generateRandomStockNumber();
-            System.out.println(account + "으로 생성되었습니다.!.!.!.");
             Optional<Stock> before_account = stockRepository.findByAccount(account);
             if (!before_account.isPresent()) {
                 return account;
