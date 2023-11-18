@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="./css/main1.css"/>
   <!-- javascript -->
   <!-- <script src="/client/main.js" ></script> -->
-  <script src="/client/rank.js"></script>
   <script src="/client/index.js"></script>
 
   
@@ -77,7 +76,7 @@
                 
                 <div class="touch">
                     <span>반갑습니다.</span>
-                    <span id="homeNickname">@</span>
+                    <span id="homeNickname"></span>
                     <span>님</span>
                     <div class="touch_side">나의 정보를 확인해보세요</div> 
                 </div>
@@ -93,8 +92,8 @@
            </div>
            <div class="box_txt">
             <div class="box_txt_name">NAME</div>
-            <div class="box_txt_nickname"> <p id="homeNickname">찹쌀떡꼬부기</p> </div>
-            <div class="box_txt_code"> <span id="homeAccount"></span><span>D</span> </div>
+            <div class="box_txt_nickname"> <p id="homeNickname2"></p> </div>
+            <div class="box_txt_code"> <span id="homeRanking"></span><span>위</span> </div>
           </div>
       </div>
       <div>
@@ -126,39 +125,8 @@
       <img class="box_barcode" style="width:140px" src="./images/barcod.png">
     </div>
 </div>
-
-
-
-
                 </div>
-                  <!-- <div class="boxIn_head">My infomation</div>
-
-
-                  div
-                        <div class="boxIn_imgbox">
-                            <img class="boxIn_img"
-                            style="width: 145px" src="./images/infoImg.png">
-                        </div>
-                        <div class="boxIn">
-                          <table>
-                            <tr>
-                            <td> 닉네임  </td>
-                            <td width="10px;">| </td>
-                            <td><p id="homeNickname">@</p></td>
-                            </tr>
-                            <tr>
-                              <td> 잔고  </td>
-                              <td width="10px;">| </td>
-                              <td><p id="homeBalance">@</p></td>
-                            </tr>
-                            <tr>
-                              <td> 계좌번호  </td>
-                              <td width="10px;">| </td>
-                              <td><p id="homeAccount">@</p></td>
-                            </tr>
-                          </table>
-                        </div> -->
-
+        
           </div>
 
 
@@ -174,9 +142,31 @@
         <a class="home__nav_top-2" href="http://127.0.0.1:5500/howtoplay.html"> 게임 방법 <br/> </a>
       </ul>
       <ul class="home__nav_bottom">
-        <a class="home__nav_bottom-1">게임시작 <br/> </a>
-        <!-- onclick="startGame() -->
-        <a class="home__nav_bottom-2" id="loginButton" href="http://127.0.0.1:5500/main.html">로그아웃<br/> </a>
+        <a onclick="SendMessageToUnity()" class="home__nav_bottom-1">게임시작 <br/> </a>
+        <script src="./cap10/Build/cap10.loader.js"></script>
+        <script>
+          function SendMessageToUnity(){
+            var accountNumber = localStorage.getItem('accountNumber');
+            var url = "http://localhost:55249?accountNumber=" + accountNumber;
+            window.location.href = url;}
+        </script>
+        <a class="home__nav_bottom-2" id="logoutButton">로그아웃<br/> </a>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              const logoutButton = document.getElementById('logoutButton');
+          
+              logoutButton.addEventListener('click', function() {
+                  // localStorage에서 토큰 제거
+                  localStorage.removeItem('accessToken');
+                  localStorage.removeItem('refreshToken');
+                  localStorage.removeItem('accountNumber')
+          
+                  // 로그아웃 후 메인 페이지로 리다이렉트
+                  window.location.href = "http://127.0.0.1:5500/main.html";
+              });
+          });
+          </script>
+          
       </ul>
       <div id="intro"></div>
     </div>
@@ -244,7 +234,7 @@
                 <col width="200px">
               </colgroup>
               <tbody>
-
+             
               </tbody>
             </table>
           </div>

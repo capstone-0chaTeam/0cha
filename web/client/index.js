@@ -1,65 +1,125 @@
-// 
-// const serverUrl = "http://localhost:8082/Id_NickName_Balance";
-// URL이 "http://" 또는 "https://"로 시작하지 않으면 "http://"를 추가
-// if (!serverUrl.startsWith("http://") && !serverUrl.startsWith("https://")) {
-//     serverUrl = "http://" + serverUrl;
-// }
-// fetch(serverUrl, {
+var currentURL = window.location.href;
 
-    const accesstoken = localStorage.getItem('accessToken');
-    const serverUrl = "http://localhost:8082/userInfo/Id_NickName_Balance";
-    //URL이 "http://" 또는 "https://"로 시작하지 않으면 "http://"를 추가
-    if (!serverUrl.startsWith("http://") && !serverUrl.startsWith("https://")) {
-        serverUrl = "http://" + serverUrl;
+if (currentURL.includes('?')) {
+// // 현재 페이지 URL을 가져옵니다.
+
+// // URL에서 쿼리 문자열을 추출합니다.
+var queryString = currentURL.split('?')[1];
+
+// // 쿼리 문자열을 파싱하여 키-값 쌍을 객체로 변환합니다.
+var queryParams = {};
+queryString.split('&').forEach(function(param) {
+    var parts = param.split('=');
+    var key = decodeURIComponent(parts[0]);
+    var value = decodeURIComponent(parts[1]);
+    queryParams[key] = value;
+});
+
+// // accessToken 및 refreshToken을 추출합니다.
+var accessToken = queryParams.accessToken;
+var refreshToken = queryParams.refreshToken;
+
+if (accessToken && refreshToken) {
+    // localStorage에 저장
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+    refreshPage();
+}
+// 페이지 새로 고침// 다른 페이지로 리디렉션
+}
+
+const accessToken = localStorage.getItem('accessToken');
+const serverUrl = "http://121.158.132.54:18646/userInfo/Id_NickName_Balance";
+//URL이 "http://" 또는 "https://"로 시작하지 않으면 "http://"를 추가
+if (!serverUrl.startsWith("http://")) {
+    serverUrl = "http://" + serverUrl;
+}
+
+fetch(serverUrl, {
+    method: 'GET',
+    headers: {
+            'Authorization': "Bearer "+localStorage.getItem('accessToken')
     }
-    fetch(serverUrl, {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ${accessToken}' ,
+})
+.then(response => response.json())
+.then(data => {
+    
+    document.getElementById("homeNickname").textContent = data.nickname;
+    document.getElementById("homeNickname2").textContent = data.nickname;
+    document.getElementById("homeAccount").textContent = data.account;
+    document.getElementById("homeBalance").textContent = data.balance;
+    localStorage.setItem('accountNumber', data.account);
+
+})
+.catch(error => {
+    console.error('회원정보 요청 중 오류 발생:', error);
+});
+
+function refreshPage() {
+    window.location.href = "http://127.0.0.1:5500/mainSuccess.html"
+}
+
+
+
+//------------------------랭킹-------------------------
+
+const token1 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2"
+    fetch("hhttp://121.158.132.54:18646/userInfo/rank", {
+    method: 'GET',
+    headers: {
+        'Authorization': token1
+    }
+})
+
+
+
+.then(response => response.json())
+.then(data => {
+   topRanking(data);
+   ranking(data);
+   infoRanking(data);
+})
+.catch(error => {
+    console.error('랭킹 정보 요청 중 오류 발생:', error);
+});
+
+function topRanking(data){
+     document.getElementById("nickname1").textContent = data[0].nickname;
+     document.getElementById("account1").textContent = data[0].balance +" 원";
+ 
+     document.getElementById("nickname2").textContent = data[1].nickname;
+     document.getElementById("account2").textContent = data[1].balance+" 원";
+ 
+     document.getElementById("nickname3").textContent = data[2].nickname;
+     document.getElementById("account3").textContent = data[2].balance+" 원";
+};
+function ranking(data){
+    const table= document.getElementById("rankDB");
+    const tbody = table.querySelector('tbody');
+    data.forEach((data, index) => {
+        const row = document.createElement('tr');
+
+        const rankCell = document.createElement('td');
+        rankCell.textContent = index + 1;
+        row.appendChild(rankCell);
+
+        const nicknameCell = document.createElement('td');
+        nicknameCell.textContent = data.nickname;
+        row.appendChild(nicknameCell);
+
+        const accountCell = document.createElement('td');
+        accountCell.textContent = data.balance + " 원";
+        row.appendChild(accountCell);
+
+        tbody.appendChild(row);
+})};
+function infoRanking(data) {
+    const savedDataString = localStorage.getItem('accountNumber');
+
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].account === savedDataString) {
+            document.getElementById("homeRanking").textContent = i+1;
+            return;  // 해당 계정을 찾으면 바로 함수를 종료하도록 수정
         }
-    })
-    .then(response => response.json())
-    .then(data => {
-        //웹화면에 이름 
-        console.log(data)
-        // console.log(data.nickname)
-
-        document.getElementById("homeNickname").textContent = data.nickname;
-        document.getElementById("homeAccount").textContent = data.account;
-        document.getElementById("homeBalance").textContent = data.balance;
-        localStorage.setItem('account', data.account);
-    })
-    .catch(error => {
-        console.error('회원정보 요청 중 오류 발생:', error);
-    });
-
-// function startGame() {
-//     // 계좌번호를 가져오거나 사용자 정보를 생성
-//    
-
-//     // Unity 웹 플레이어로 계좌번호 전달
-//     var unityObject = UnityObject2.instances[0];
-//     if (unityObject) {
-//         unityObject.getUnity().SendMessage("YourGameObjectName", "ReceiveAccountNumber", accountNumber);
-//     }
-// }
-
-
-
-
-// // 게임 시작 버튼 클릭 시 실행되는 JavaScript 함수
-// function startGame() {
-//     // 계좌번호를 가져오거나 사용자 정보를 생성
-//     var accountNumber = data.account; // 웹에서 가져온 사용자 정보
-
-//     // Unity에서 사용자 정보를 받을 함수 호출
-//     SendMessageToUnity("ReceiveAccountNumber", accountNumber);
-// }
-
-// // Unity로 데이터 전달하는 함수
-// function SendMessageToUnity(functionName, message) {
-//     if (typeof UnityLoader !== "undefined" && UnityLoader.SystemInfo) {
-//         // Unity에 메시지를 전달
-//         UnityLoader.SystemInfo.SendMessage(functionName, message);
-//     }
-// }
+    }
+}

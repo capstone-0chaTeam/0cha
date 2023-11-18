@@ -58,7 +58,6 @@
           <input type="text" id="id" name="id" placeholder="id" >
           <input type="password" name="password" id="password" placeholder="Password"> 
           <button class="login_button" type="submit">Login</button>
-         
 
         </form>
             <div id="message"></div>
@@ -70,15 +69,17 @@
         <div>
           <ul>
             <li class="login-sns-kakao">
-
+            <form id="login-form-kakao">
               <a href="http://localhost:8082/oauth2/authorization/kakao"> <img style="width: 40px" src="images/logo-kakao.png"> 
-                <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-                
+                <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>                
               </a>
+              </form>
             </li>
 
             <li class="login-sns-naver">
+              <form id="login-form-naver">
               <a href="http://localhost:8082/oauth2/authorization/naver"> <img style="width: 40px" src="images/logo-naver.png"> </a>
+              </form>
             </li>
           </ul>
           <div id="message" style="color: red;"></div> <!-- 오류 메시지를 표시할 요소 -->

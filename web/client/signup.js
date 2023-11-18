@@ -1,7 +1,3 @@
-// const frontend_base_url = "http://127.0.0.1:5500"
-// const backend_base_url = "http://localhost:8082"
-
-
 
 window.onload = () => {
   console.log("로딩되었음")
@@ -18,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const id = document.getElementById("id").value;
 
 
-        fetch("http://localhost:8082/sing-up", {
+        fetch("http://121.158.132.54:18646/sign-up", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -39,40 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("회원가입 실패");
           }
       })
-      // .then(response => response.json())
-        // .then((responseData) => {
-          
-        //     console.log("로딩되었음" + responseData)
-        
-        //     let rows = responseData['id'];
-        //     for (let i = 0; i < rows.length; i++) {
-        //       let alreadyId = rows[i]['id'];
-        //       if (alreadyId === document.querySelector('#id').value) {
-        //         alert( '중복된 아이디입니다.');
-        //       } else {
-        //       alert('사용가능한 아이디입니다');
-        //       }
-        //     }
-        // })
-
-
-          // if (responseData && responseData.id) {
-          //   const rows = responseData.id;
-          //   let isDuplicate = false;
-          //   for (let i = 0; i < rows.length; i++) {
-          //     const alreadyId = rows[i].id;
-          //     if (alreadyId === id) {
-          //       isDuplicate = true;
-          //       break;
-          //     }
-          //   }
-          //   if (isDuplicate) {
-          //     alert("중복된 아이디입니다.");
-          //   } else {
-          //     alert("사용가능한 아이디입니다");
-          //   }
-          // }
-
+  
 
           .catch((error) => {
             // 오류 처리

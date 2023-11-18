@@ -1,5 +1,3 @@
-const frontend_base_url = "http://127.0.0.1:5500"
-const backend_base_url = "http://localhost:8082"
 
 window.onload = () => {
     console.log("로딩되었음")
@@ -7,8 +5,7 @@ window.onload = () => {
    
 
  document.addEventListener("DOMContentLoaded", function() {
-            const loginForm = document.querySelector("form");
-            const messageDiv = document.getElementById("message");
+            const loginForm = document.querySelector("#login-form");
 
             loginForm.addEventListener("submit", function(event) {
                 event.preventDefault();
@@ -20,14 +17,12 @@ window.onload = () => {
                     const id = idInput.value;
                     const password = passwordInput.value;
 
-
-
-
-                    fetch("http://localhost:8082/login", {
+                
+                        fetch("http://121.158.132.54:18646/login", {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
-                
+                            'Content-Type': 'application/json',
+
                         },
                         body: JSON.stringify({
                             email: id,
@@ -35,12 +30,7 @@ window.onload = () => {
                         })
                     })
                     .then(response => {
-                            console.log(response.data);
-                        console.log(response.status);
-                        console.log(password);
                         if (response.ok) { // HTTP 상태 코드가 200일 경우 
-                            console.log("서버에 제대로 전달했는지 로그 찍어서 확인"+response);
-                            console.log(response.headers);
                             accessToken = response.headers.get('Authorization');
                             refreshToken = response.headers.get('Authorization-Refresh');
                          
@@ -48,11 +38,8 @@ window.onload = () => {
                                 alert("아이디 혹은 비밀번호가 틀렸습니다.");
                                 return;
                             }
-
                             localStorage.setItem('accessToken', accessToken);
                             localStorage.setItem('Authorization-Refresh', refreshToken);
-                
-
 
                             console.log("로그인 완료. 메인화면으로 넘어갑니다")
                             window.location.href = "http://127.0.0.1:5500/mainSuccess.html";
@@ -74,6 +61,7 @@ window.onload = () => {
                     emptyField.focus();
                 }
             });
+            
         });
 
         function checkNullInput(input) {
@@ -86,5 +74,3 @@ window.onload = () => {
             }
         }
 
-
-        
