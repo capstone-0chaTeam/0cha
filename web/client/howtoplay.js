@@ -1,4 +1,7 @@
-
+window.onload = () => {
+  console.log("로딩되었음")
+}
+ 
 
 // Arrow up버튼을 아래로 스크롤시 투명하게 처리함
 const arrowUp = document.querySelector('.arrow-up');

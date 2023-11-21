@@ -12,8 +12,8 @@
   <!-- (OG) open graph data -->
   <meta property="og:title" content="2023년 2학기 캡스톤 주식시물레이션 게임+웹" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="배포 후 완성된 url" />
-  <meta property="og:image" content="배포 후 완성된 이미지 url" />
+  <meta property="og:url" content="https://capstone-0chateam.github.io/stocksimulation/" />
+  <meta property="og:image" content="https://capstone-0chateam.github.io/stocksimulation/images/og.webp" />
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A300%2C400"/>
@@ -28,8 +28,9 @@
   <!-- css -->
   <link rel="stylesheet" href="./css/main1.css"/>
   <!-- javascript -->
-  <!-- <script src="/client/main.js" ></script> -->
-  <script src="/client/index.js"></script>
+<!--   <script src="https://capstone-0chateam.github.io/stocksimulation/client/indexSuccess.js"></script> -->
+  <script src="https://capstone-0chateam.github.io/stocksimulation/client/successIndex.js"></script>
+  <script src="https://capstone-0chateam.github.io/stocksimulation/client/index.js"></script>
 
   
 </head>
@@ -139,16 +140,17 @@
     <div class="home__nav">
       <ul class="home__nav_top">
         <a class="home__nav_top-1" href="https://www.bok.or.kr/ebook/ecatalog5.jsp?Dir=359" target="_blank">주식 용어 <br/> </a> 
-        <a class="home__nav_top-2" href="http://127.0.0.1:5500/howtoplay.html"> 게임 방법 <br/> </a>
+        <a class="home__nav_top-2" href="https://capstone-0chateam.github.io/stocksimulation/howtoplay.html"> 게임 방법 <br/> </a>
       </ul>
       <ul class="home__nav_bottom">
         <a onclick="SendMessageToUnity()" class="home__nav_bottom-1">게임시작 <br/> </a>
-        <script src="./cap10/Build/cap10.loader.js"></script>
+        <script src="https://capstone-0chateam.github.io/stocksimulation/stock/Build/stock.loader.js"></script>
+
         <script>
           function SendMessageToUnity(){
             var accountNumber = localStorage.getItem('accountNumber');
-            var url = "http://localhost:55249?accountNumber=" + accountNumber;
-            window.location.href = url;}
+            var url = "https://capstone-0chateam.github.io/stocksimulation/stock/index.html?accountNumber=" + accountNumber;
+            window.location.href = url; }
         </script>
         <a class="home__nav_bottom-2" id="logoutButton">로그아웃<br/> </a>
         <script>
@@ -162,7 +164,7 @@
                   localStorage.removeItem('accountNumber')
           
                   // 로그아웃 후 메인 페이지로 리다이렉트
-                  window.location.href = "http://127.0.0.1:5500/main.html";
+                  window.location.href = "https://capstone-0chateam.github.io/stocksimulation/main.html";
               });
           });
           </script>
@@ -257,6 +259,9 @@
     <div><span >팩스 : 1234-5678</span>
       <span class="footer__info__tel"><a href="tel:+82.1234.5678">전화 : 1234-5678</a></span></div>
     <a href="mailto:1234@gmail.com">E-mail: 1234@gmail.com</a>
+  </div>
+   <div>
+    <a href="https://www.youtube.com/channel/UCHL7GrmKqjUbnJUqe7AIh3Q">영차 유튜브 채널</a>
   </div>
 </footer>
 </body>

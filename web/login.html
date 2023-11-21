@@ -8,12 +8,12 @@
  <title>login</title>
  <meta name="description" content="2023년 2학기 캡스톤 주식시물레이션 게임+웹" />
  <meta name="author" content="0cha" />
- <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+ <link rel="shortcut icon" href="https://capstone-0chateam.github.io/stocksimulation/images/favicon.ico" type="image/x-icon">
   <!-- (OG) open graph data -->
   <meta property="og:title" content="2023년 2학기 캡스톤 주식시물레이션 게임+웹" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="배포 후 완성된 url" />
-  <meta property="og:image" content="배포 후 완성된 이미지 url" />
+  <meta property="og:url" content="https://capstone-0chateam.github.io/stocksimulation/" />
+  <meta property="og:image" content="https://capstone-0chateam.github.io/stocksimulation/images/og.webp" />
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A300%2C400"/>
@@ -27,7 +27,7 @@
   ></script>
   <!-- css -->
   <link rel="stylesheet" href="./css/login.css"/>
-  <script src="/client/login.js"></script>
+  <script src="https://capstone-0chateam.github.io/stocksimulation/client/login.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
@@ -36,12 +36,12 @@
 <main>
 <section style="background-color: #101D29;" id="#home" class="section">
 <div class="logo">
-  <div class="logo__img" onclick="location.href='http://127.0.0.1:5500/main.html'">
+  <div class="logo__img" onclick="location.href='https://capstone-0chateam.github.io/stocksimulation/main.html'">
     <img style=" width: 500px" src="images/logo.png" />
   </div>  
 
   <div class="login">
-    <div onclick="location.href='http://127.0.0.1:5500/main.html'" class="login__X">
+    <div onclick="location.href='https://capstone-0chateam.github.io/stocksimulation/main.html'" class="login__X">
     <a> <i class="fa-sharp fa-regular fa-x fa-xl" style="color: #ffffff;"></i> </a>
     </div>
   
@@ -55,8 +55,8 @@
         <div>
           <!-- method="POST" -->
         <form id="login-form"> 
-          <input type="text" id="id" name="id" placeholder="id" >
-          <input type="password" name="password" id="password" placeholder="Password"> 
+          <input type="text" id="id" name="id" placeholder="id" required>
+          <input type="password" name="password" id="password" placeholder="Password" required> 
           <button class="login_button" type="submit">Login</button>
 
         </form>
@@ -70,7 +70,9 @@
           <ul>
             <li class="login-sns-kakao">
             <form id="login-form-kakao">
-              <a href="http://localhost:8082/oauth2/authorization/kakao"> <img style="width: 40px" src="images/logo-kakao.png"> 
+              <a href="https://racconworld.com:18646/oauth2/authorization/kakao"> <img style="width: 40px" src="images/logo-kakao.png"> 
+<!--               <a href="https://racconworld.com:18646/oauth2/authorization/kakao"> <img style="width: 40px" src="images/logo-kakao.png"> 
+                http://racconworld.com:18646/login/oauth2/code/kakao?code=YH6k5qJUgYfcfB4Gc69BNuVrCGu8vV3iHrtoPUoVF-yHaRVZN60mW2rmnR8KKiURAAABi_A_BB9ONYg--5I0Sw&state=00V3EufUE0ahB9HYqAIm4p8sokkbvWqyyWM-768xI9Q%3D -->
                 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>                
               </a>
               </form>
@@ -78,12 +80,12 @@
 
             <li class="login-sns-naver">
               <form id="login-form-naver">
-              <a href="http://localhost:8082/oauth2/authorization/naver"> <img style="width: 40px" src="images/logo-naver.png"> </a>
+              <a href="https://racconworld.com:18646/oauth2/authorization/naver"> <img style="width: 40px" src="images/logo-naver.png"> </a>
               </form>
             </li>
           </ul>
           <div id="message" style="color: red;"></div> <!-- 오류 메시지를 표시할 요소 -->
-          <a class="button_join" href="http://127.0.0.1:5500/join.html"> 회원가입 </a>
+          <a class="button_join" href="https://capstone-0chateam.github.io/stocksimulation/join.html"> 회원가입 </a>
         </div>
       </div>
 
