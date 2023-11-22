@@ -3,7 +3,7 @@ package com.CHA.game.Entity;
 import com.CHA.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,16 +24,19 @@ public class Stock {
 
 
 
-    @OneToMany(mappedBy = "stocklist_to_stock", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "stocklist_to_stock", fetch = FetchType.LAZY)
+    @BatchSize(size = 25)
     private List<StockList> stocklist = new ArrayList<>();
 
     private String account;                 //계좌번호
     private Long cash;                       //주식을 살 수 있는 현금
     private Long balance;                   //통장잔고
-    private Long valuationgainandloss_all;  //평가손익
     private Long purchaseamount_all;        //매입금액
-    private Long evaluationamount_all;      //평가금액
 
-
+    public void updateStock( Long balance ,Long cash ,Long purchaseprice_all){
+        this.balance = balance;
+        this.cash = cash;
+        this.purchaseamount_all = purchaseprice_all;
+    }
 
 }

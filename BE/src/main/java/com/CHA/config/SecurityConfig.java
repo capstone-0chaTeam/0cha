@@ -25,12 +25,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-/**
- * 인증은 CustomJsonUsernamePasswordAuthenticationFilter에서 authenticate()로 인증된 사용자로 처리
- * JwtAuthenticationProcessingFilter는 AccessToken, RefreshToken 재발급
- */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -65,7 +60,7 @@ public class SecurityConfig {
 
                 // 아이콘, css, js 관련
                 // 기본 페이지, css, image, js 하위 폴더에 있는 자료들은 모두 접근 가능, h2-console에 접근 가능
-                .requestMatchers("/","/css/**","/images/**","/js/**","/favicon.ico","/h2-console/**","/Game/**").permitAll()
+                .requestMatchers("/","/css/**","/images/**","/js/**","/favicon.ico","/h2-console/**","/Game/**" ,"/userInfo/rank").permitAll()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/basic-signup").permitAll()
                 .requestMatchers("/sign-up").permitAll()

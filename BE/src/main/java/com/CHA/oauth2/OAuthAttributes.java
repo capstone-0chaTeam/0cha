@@ -7,9 +7,7 @@ import com.CHA.oauth2.userinfo.OAuth2UserInfo;
 import com.CHA.user.Role;
 import com.CHA.user.SocialType;
 import com.CHA.user.User;
-import com.CHA.user.service.UserService;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 import java.util.UUID;

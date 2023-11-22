@@ -1,6 +1,5 @@
 package com.CHA.game.Entity;
 
-import com.CHA.game.dto.StockListDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,6 +20,8 @@ public class StockList {
     private Long id;
 
 
+
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stock_id" )
@@ -31,27 +32,14 @@ public class StockList {
 
 
     private String stockcode;               //종목코드
-    private Long valuationgainandloss;      //평가손익
-    private Long purchaseamount;            //매입금액
-    private Long evaluationamount;          //평가금액
-    private Long stockreturns;              //수익률
     private Long purchaseprice;             //매입단가
     private Long quantityheld;              //주식 보유수량
 
-    public static StockList toEntity(StockListDTO dto ){ // Stock stock 매개 변수
-        return StockList.builder()
-//                .stocklist_to_stock(stock)
-                .stockcode(dto.getStockcode())
-                .valuationgainandloss(dto.getValuationgainandloss())
-                .purchaseamount(dto.getPurchaseamount())
-                .evaluationamount(dto.getEvaluationamount())
-                .stockreturns(dto.getStockreturns())
-                .purchaseprice(dto.getPurchaseprice())
-                .quantityheld(dto.getQuantityheld())
-                .build();
+    public void updateStockList(String stockcode, Long purchaseprice , Long quantityheld){
+        this.stockcode = stockcode;
+        this.purchaseprice = purchaseprice;
+        this.quantityheld = quantityheld;
     }
-
-
 
 
 }

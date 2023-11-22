@@ -31,17 +31,15 @@ public class UserInfoController {
     // /user1 request를 받아서 이메일을 반환해준다.
     //@RequestHeader 어노테이션을 활용해서 리펙토링 해보기
     //@RequestHeader("Authorization") String authorizationHeader 형식으로
+    //Optional안에 uesremail이 담겨있음
+    //userinfo User형식
     @GetMapping("/Id_NickName_Balance")
     public ResponseEntity<UserInfoDto> userInfo(HttpServletRequest request){
 
-        //Optional안에 uesremail이 담겨있음
         Optional<String> useremail = jwtService.extractAccessTokenToUserInfo(request);
-        //userinfo User형식
-
         UserInfoDto userInfoDto = userInfoService.userInfo_Id_NickName_Balance(useremail);
-        System.out.println(userInfoDto.getAccount());
 
-        return ResponseEntity.ok(userInfoDto);
+        return ResponseEntity.ok().body(userInfoDto);
 
     }
 
@@ -51,12 +49,6 @@ public class UserInfoController {
     public ResponseEntity<List<UserRankerDto>> rank(){       // 시큐리티 설정에서 도메인 열어주기
 
         List<UserRankerDto> ranker = userInfoService.usersInfo_rank();
-
-
-
-        log.info("rank : {}" ,ranker);
-
-
         return ResponseEntity.ok(ranker);
     }
 }
