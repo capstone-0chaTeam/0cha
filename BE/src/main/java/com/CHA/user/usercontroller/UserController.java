@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@Slf4j
+@CrossOrigin("*")
 public class UserController {
 
     private final UserService userService;

@@ -23,7 +23,7 @@ public class Stock {
     private User user;
 
 
-
+    @Builder.Default
     @OneToMany(mappedBy = "stocklist_to_stock", fetch = FetchType.LAZY)
     @BatchSize(size = 25)
     private List<StockList> stocklist = new ArrayList<>();
