@@ -113,7 +113,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     public String balanceNumber() {
         for (; ; ) {
             String account = PasswordUtil.generateRandomStockNumber();
-            System.out.println(account + "으로 생성되었습니다.!.!.!.");
             Optional<Stock> before_account = stockRepository.findByAccount(account);
             if (!before_account.isPresent()) {
                 return account;

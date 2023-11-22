@@ -10,6 +10,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,9 +57,8 @@ public class UserInfoService {
     }
 
     public List<UserRankerDto> usersInfo_rank() {
-
-
         List<Stock> ranking = stockRepository.findTop20ByOrderByBalanceDesc();
+        Collections.sort(ranking.gets);
 
         List<UserRankerDto> ranker = ranking
                 .stream()

@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/Game")
+@CrossOrigin("*")
 @Slf4j
 public class GameController {
     //10-28일
@@ -28,13 +29,11 @@ public class GameController {
 
 
     //매도하기 수량 불러오기
-    @GetMapping("/stockquantity")
-    public ResponseEntity<StockQuantityDTO> StockQuantity(@RequestParam String account , @RequestParam String stockcode) {
         // 경로 변수로 받은 account와 quantityheld 값을 사용하여 요청을 처리
 
-        StockQuantityDTO stockList = stockListService.StockQuantity(account , stockcode);
-
-        return ResponseEntity.ok(stockList);
+    @GetMapping("/stockquantity")
+    public ResponseEntity<StockQuantityDTO> StockQuantity(@RequestParam String account , @RequestParam String stockcode) {
+        return ResponseEntity.ok(stockListService.StockQuantity(account , stockcode));
     }
 
     @GetMapping("/stockcash")

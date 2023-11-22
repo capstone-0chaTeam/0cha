@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/Game")
+@CrossOrigin("*")
 @Slf4j
 public class GameSaveController {
 
