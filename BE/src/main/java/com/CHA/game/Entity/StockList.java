@@ -28,7 +28,7 @@ public class StockList {
     private Stock stocklist_to_stock;
 
 
-//    private Long balance;                   //잔고 가 필요한거 DB의 중복을 일으키는데 ? 생각해보자
+//    private Long balance;                   //잔고 가 필요한거 DB의 중복을 일으키는데 ? 생각해보자 -> 회의 후 삭제함 
 
 
     private String stockcode;               //종목코드
