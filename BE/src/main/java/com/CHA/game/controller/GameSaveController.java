@@ -22,11 +22,16 @@ public class GameSaveController {
 
 
     /*게임에서 매수,매도 한번에 처리함*/
+    //EX 보유 0주 10주 구매 -> 10주 
+    //   보유 10주 10주 구매 -> 20주
+    //   보유 10주 0주 ->   0주
     @PostMapping("/save-stockList")
     public void saveStockList(@RequestBody StockListDTO stockListDTO) {
         stockListService.saveStockList(stockListDTO);
     }
 
+    //게임에서 종료할때 자산 정보 저장하기 
+    //주시리스트 X 전체 자산 O
     @PostMapping("/save-asset")
     public void saveStockAsset(@RequestBody StockAssetDTO stockAssetDTO) {
         stockService.saveStockAsset(stockAssetDTO);
