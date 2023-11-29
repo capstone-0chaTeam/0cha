@@ -36,142 +36,33 @@ public class GameController {
         return ResponseEntity.ok(stockListService.StockQuantity(account , stockcode));
     }
 
+    //현금 조회하기
     @GetMapping("/stockcash")
     public ResponseEntity<StockCashDTO> StockCash(@RequestParam String account){
         return ResponseEntity.ok().body(stockListService.StockCash(account));
     }
-
+    //게임시작할때 전체 주식 리스트 조회하기
     @GetMapping("/start/stockList")
     public ResponseEntity<List<StartStockListDTO>> startStockList(@RequestParam String account){
         return ResponseEntity.ok().body(stockService.startStockList(account));
     }
-
-
-
-
-
-    //@RequestHeader("StockList") String stocklist
+    
+    //전체 주식 리스트 다른 버전
     /*
-
-{
-    "stock_id": "1", // Stock 엔티티의  /실제 ID 값
-    "stockcode": "!21233",
-    "valuationgainandloss": 112323,
-    "purchaseamount": 121233,
-    "evaluationamount": 121233,
-    "stockreturns": 121233,
-    "purchaseprice": 121233,
-    "quantityheld": 121233
-    }
-}
-
-
-
-
-
-    * */
-//    @PostMapping("/save-stockList")
-//    public ResponseEntity<StockListDTO> saveStockList(@RequestBody StockListDTO stockListDTO) {
-//        StockListDTO list = stockListService.saveStockList(stockListDTO);
-//        System.out.println(list);
-//        return ResponseEntity.ok().body(list);
-//    }
-//
-//    @PostMapping("/save-stockList")
-//    public ResponseEntity<String>  newsaveStockList2(@RequestBody StockListDTO2 stockListDTO2) {
-//        return ResponseEntity.ok().body("성공");
-//
-//    }
-
-
-
-    //
-//    아래의 형식
-//    [
-//    {
-//        "id": 35,
-//            "stockcode": "LG",
-//            "valuationgainandloss": 112323,
-//            "purchaseamount": 121233,
-//            "evaluationamount": 121233,
-//            "stockreturns": 121233,
-//            "purchaseprice": 121233,
-//            "quantityheld": 121233
-//    },
-//    {
-//        "id": 36,
-//            "stockcode": "LG",
-//            "valuationgainandloss": 112323,
-//            "purchaseamount": 121233,
-//            "evaluationamount": 121233,
-//            "stockreturns": 121233,
-//            "purchaseprice": 121233,
-//            "quantityheld": 121233
-//    }
-//]
+    
     @GetMapping("/who_buyList")
     public ResponseEntity<List<StockList>> showStockList(@RequestParam("account") String account)  {
 
-        System.out.println(account);
-
         List<StockList> stockList = stockService.showStock(account);
-
-        System.out.println(stockList.toString());
         return ResponseEntity.ok().body(stockList);
     }
 
 
     @GetMapping("/who_buyList2")
     public ResponseEntity<List<StockList>> showStockList2(@RequestParam("account") String account)  {
-
-        System.out.println(account);
-
         List<StockList> stockList = stockService.showStock(account);
-
-        System.out.println(stockList.toString());
+        
         return ResponseEntity.ok().body(stockList);
     }
-
-//      아래의 형식
-//    {
-//        "account": "54457329",
-//            "stockList": [
-//        {
-//            "id": 35,
-//                "stockcode": "LG",
-//                "valuationgainandloss": 112323,
-//                "purchaseamount": 121233,
-//                "evaluationamount": 121233,
-//                "stockreturns": 121233,
-//                "purchaseprice": 121233,
-//                "quantityheld": 121233
-//        },
-//        {
-//            "id": 36,
-//                "stockcode": "LG",
-//                "valuationgainandloss": 112323,
-//                "purchaseamount": 121233,
-//                "evaluationamount": 121233,
-//                "stockreturns": 121233,
-//                "purchaseprice": 121233,
-//                "quantityheld": 121233
-//        },
-//    ]
-//    }
-
-//    @GetMapping("/who_buyList2")
-//    public ResponseEntity<StockListDTO2> showStockList2(@RequestParam("account") String account){
-//
-//        System.out.println(account);
-//
-//        List<StockList> stockList = stockService.showStock(account);
-//
-//        StockListDTO2 stocklist2 = StockListDTO2.builder()
-//                .account(account)
-//                .stockList(stockList)
-//                .build();
-//
-//        return ResponseEntity.ok().body(stocklist2);
-//
-//    }
+    */
 }
