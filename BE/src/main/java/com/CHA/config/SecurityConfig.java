@@ -61,6 +61,8 @@ public class SecurityConfig {
 
                 // 아이콘, css, js 관련
                 // 기본 페이지, css, image, js 하위 폴더에 있는 자료들은 모두 접근 가능, h2-console에 접근 가능
+                //userInfo/rank 랭크는 기본 페이지 에서 로드 되기에 모두 접근
+                //Game/** 모두 접근 가능 
                 .requestMatchers("/","/css/**","/images/**","/js/**","/favicon.ico","/h2-console/**","/Game/**" ,"/userInfo/rank").permitAll()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/sign-up").permitAll()
@@ -118,13 +120,6 @@ public class SecurityConfig {
     public LoginFailureHandler loginFailureHandler() {
         return new LoginFailureHandler();
     }
-
-    /**
-     * CustomJsonUsernamePasswordAuthenticationFilter 빈 등록
-     * 커스텀 필터를 사용하기 위해 만든 커스텀 필터를 Bean으로 등록
-     * setAuthenticationManager(authenticationManager())로 위에서 등록한 AuthenticationManager(ProviderManager) 설정
-     * 로그인 성공 시 호출할 handler, 실패 시 호출할 handler로 위에서 등록한 handler 설정
-     */
     @Bean
     public CustomJsonUsernamePasswordAuthenticationFilter customJsonUsernamePasswordAuthenticationFilter() {
         CustomJsonUsernamePasswordAuthenticationFilter customJsonUsernamePasswordLoginFilter
