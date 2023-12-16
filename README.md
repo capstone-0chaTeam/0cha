@@ -1,6 +1,11 @@
 <div align="center"><h1>0cha Team👨‍👩‍👧‍👦</h1></div>
 
 <div align="center"><h1> Stock Simulation</h1></div>
+주식 시뮬레이션 게임 사이트 : https://capstone-0chateam.github.io/stocksimulation/main.html
+
+
+
+프로젝트 시연 영상: https://www.youtube.com/watch?v=vJlbf1-0KkU&feature=youtu.be
 
 ## 🔧 Tech & Tool 🔧
 <div align="center"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
